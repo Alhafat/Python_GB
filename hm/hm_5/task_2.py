@@ -20,14 +20,12 @@ bonus = ["10%", "5%", "15%"]
 {'Alice': 500.0, 'Bob': 300.0, 'Charlie': 1050.0}
 """
 
+
 names = ["Alice", "Bob", "Charlie"]
 salary = [5000, 6000, 7000]
-# print(format(temp, ".1f"))
 bonus = ["10%", "5%", "15%"]
 
-result = {(key for key in names): (x*float(y[:-1])//100 for x, y in zip(salary, bonus))}
-print(*result.items())
-for i,j in result.items():
-    print(*i)
-    print(*j)
+result = {name: x*float(y.strip("%"))//100 for name, x, y in zip(names, salary, bonus)}
 
+
+print(result)
